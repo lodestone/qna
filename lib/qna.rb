@@ -10,7 +10,7 @@ class QnA
   end
 
   def standardize_input(input)
-    File.exists?(input) ? File.open(input).read : input
+    File.exists?(input.to_s) ? File.open(input).read : input
   end 
 
   def parse(word_string, size)
