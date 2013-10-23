@@ -30,26 +30,32 @@ describe QnA, "the Question and Answer parser" do
       assert !qna.questions.include?("suit")
     end
 
+    it ":questions should not include \"we'd\"" do
+      assert !qna.questions.include?("we'd")
+    end
   end 
 
-  describe "when run against the full words list" do
+  # describe "when run against the full words list" do
       
-    let(:word_list) { File.open('test/fixtures/words.txt').read }
-    let(:qna) { QnA.new(word_list, 4, 'tmp/answers.txt', 'tmp/questions.txt') }
+  #   let(:word_list) { File.open('test/fixtures/words.txt').read }
+  #   let(:qna) { QnA.new(word_list, 4, 'tmp/answers.txt', 'tmp/questions.txt') }
     
-    it ":questions should include 'syzy'" do
-      assert qna.questions.include?("syzy")
-    end
+  #   it ":questions should include 'syzy'" do
+  #     assert qna.questions.include?("syzy")
+  #   end
 
-    it ":questions should not include 'summ'" do
-      assert !qna.questions.include?("summ")
-    end
+  #   it ":questions should not include 'summ'" do
+  #     assert !qna.questions.include?("summ")
+  #   end
 
-    it ":questions should not include 'suit'" do
-      assert !qna.questions.include?("suit")
-    end
+  #   it ":questions should not include 'suit'" do
+  #     assert !qna.questions.include?("suit")
+  #   end
 
-  end 
+  #   it ":questions should not include \"we'd\"" do
+  #     assert !qna.questions.include?("we'd")
+  #   end
+  # end 
 
   after do
     `rm tmp/questions.txt`

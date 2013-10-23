@@ -14,13 +14,15 @@ class QnA
   end 
 
   def parse(word_string, size)
-    answers = []
-    questions = []
+    answers      = []
+    questions    = []
     word_scanner = StringScanner.new(word_string)
     word_string.split("\n").each do |word|
       (0..word.length-1).each do |i| 
         match = word[i..i+size-1]
+        alpha = match[Regexp.compile("[A-z]{#{size},#{size}}")]
         next if match.length < size
+        next if !alpha
         word_scanner.reset
         regexp = Regexp.compile(match)
         word_scanner.scan_until(regexp)
