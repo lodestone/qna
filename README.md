@@ -1,16 +1,14 @@
 # QnA
 
-## Installation
+## Use
 
-Add this line to your application's Gemfile:
+Do this:
 
-    gem 'qna'
+    git clone https://github.com/lodestone/qna.git
 
-And then execute:
+And then do this:
 
-    $ bundle
+    $ cd qna
+    $ bin/qna <path/to/word/list>
 
-Or install it yourself as:
-
-    $ gem install qna
 
