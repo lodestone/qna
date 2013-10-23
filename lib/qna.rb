@@ -4,8 +4,9 @@ class QnA
 
   attr_reader :questions, :answers
 
-  def initialize(input, size=4)
-    parse(standardize_input(input), size.to_i)
+  def initialize(input, size=4, answers_outfile='answers.txt', questions_outfile='questions.txt')
+    answers, questions = parse(standardize_input(input), size.to_i)
+    write_questions_and_answers(answers, questions, answers_outfile, questions_outfile)
   end
 
   def standardize_input(input)
@@ -29,12 +30,12 @@ class QnA
         end
       end
     end
-    write_questions_and_answers
+    [@answers, @questions]
   end 
 
-  def write_questions_and_answers
-    File.open('answers.txt', 'w+') << @answers.join("\n")
-    File.open('questions.txt', 'w+') << @questions.join("\n")
+  def write_questions_and_answers(answers, questions, answers_outfile, questions_outfile)
+    File.open(answers_outfile, 'w+') << answers.join("\n")
+    File.open(questions_outfile, 'w+') << questions.join("\n")
   end
 
 end 

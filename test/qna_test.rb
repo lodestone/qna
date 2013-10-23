@@ -8,7 +8,7 @@ describe QnA, "the Question and Answer parser" do
   describe "when run against a words list" do
       
     let(:word_list) { File.open('test/fixtures/test-words.txt').read }
-    let(:qna) { QnA.new(word_list) }
+    let(:qna) { QnA.new(word_list, 4, 'tmp/answers.txt', 'tmp/questions.txt') }
     
     it ":answers should be an array" do
       assert qna.answers.is_a?(Array)
@@ -35,7 +35,7 @@ describe QnA, "the Question and Answer parser" do
   describe "when run against the full words list" do
       
     let(:word_list) { File.open('test/fixtures/words.txt').read }
-    let(:qna) { QnA.new(word_list) }
+    let(:qna) { QnA.new(word_list, 4, 'tmp/answers.txt', 'tmp/questions.txt') }
     
     it ":questions should include 'syzy'" do
       assert qna.questions.include?("syzy")
@@ -49,6 +49,11 @@ describe QnA, "the Question and Answer parser" do
       assert !qna.questions.include?("suit")
     end
 
+  end 
+
+  after do
+    `rm tmp/questions.txt`
+    `rm tmp/answers.txt`
   end 
 
 end 
